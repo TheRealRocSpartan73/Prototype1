@@ -5,7 +5,7 @@ using UnityEngine;
 public class FollowPlayerX : MonoBehaviour
 {
     public GameObject plane;
-    private Vector3 offset;
+    private Vector3 cameraOffset = new Vector3(21, 2, 1);
 
     // Start is called before the first frame update
     void Start()
@@ -14,8 +14,10 @@ public class FollowPlayerX : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    //Use LateUpdate for smoother animation
+    void LateUpdate()
     {
-        transform.position = plane.transform.position + offset;
+        //Move the camera as plane moves
+        transform.position = plane.transform.position + cameraOffset;
     }
 }
