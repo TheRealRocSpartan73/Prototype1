@@ -24,13 +24,8 @@ public class PlayerControllerX : MonoBehaviour
         // get the user's vertical input from up/down arrows
         verticalInput = Input.GetAxis("Vertical");
         
-        //Only tilt up or down if there is actual input. If 0 is return it means a key was not pressed.
-        if (verticalInput != 0)
-        {
-            //tilt the plane up/down based on up/down arrow keys
-            transform.Rotate(Vector3.right, Time.deltaTime * verticalInput * tiltSpeed);
-        }
-     
-
+        //tilt the plane up/down based on up/down arrow keys
+         transform.Rotate(Vector3.right, Time.deltaTime * verticalInput * tiltSpeed);
+       
     }
 }
