@@ -10,8 +10,13 @@ public class PlayerController : MonoBehaviour
     public float horizontalInput;
     public float verticalInput;
 
+    public Camera mainCamera;
+    public Camera altCamera;
+    public KeyCode cameraSwitchKey;
+
     private string hAxis = "Horizontal";
     private string vAxis = "Vertical";
+
     void Start()
     {
         
@@ -20,12 +25,25 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Get input from user
         horizontalInput = Input.GetAxis(hAxis);
         verticalInput = Input.GetAxis(vAxis);
+
         //Move the vehicle forward
         transform.Translate(Vector3.forward * Time.deltaTime * speed * verticalInput);
-        //transform.Translate(Vector3.right * Time.deltaTime * turnSpeed * horizontalInput);
+        
+        //Turn Vehicle
         transform.Rotate(Vector3.up, Time.deltaTime * turnSpeed * horizontalInput);
+
+        //If Camera switch key is pressed, reverse the "enabled" status of eac camera, so one 
+        //will always be enabled and the other "disabled".
+        if(Input.GetKeyDown(cameraSwitchKey))
+        {
+            mainCamera.enabled = !mainCamera.enabled;
+            altCamera.enabled = !altCamera.enabled;
+
+
+        }
 
     }
 }
