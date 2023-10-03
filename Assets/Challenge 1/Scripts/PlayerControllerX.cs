@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerControllerX : MonoBehaviour
 {
     private float maxSpeed = 10.0f;  //forward speed of plane
     private float tiltSpeed = 100.0f; //plane tilt rate
     public float verticalInput;    //Capture input from up/down keys
+    public float sceneSwitcher;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +28,12 @@ public class PlayerControllerX : MonoBehaviour
         
         //tilt the plane up/down based on up/down arrow keys
          transform.Rotate(Vector3.right, Time.deltaTime * verticalInput * tiltSpeed);
+
+        sceneSwitcher = Input.GetAxis("Jump");
+        if(sceneSwitcher !=0)
+        {
+            SceneManager.LoadScene("SceneSelector");
+        }
        
     }
 }

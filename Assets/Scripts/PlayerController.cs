@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public float horizontalInput;
     public float verticalInput;
     public string inputID;
+    public float sceneSwitcher;
 
     public Camera mainCamera;
     public Camera altCamera;
@@ -44,6 +46,12 @@ public class PlayerController : MonoBehaviour
             altCamera.enabled = !altCamera.enabled;
 
 
+        }
+
+        sceneSwitcher = Input.GetAxis("Jump");
+        if (sceneSwitcher != 0)
+        {
+            SceneManager.LoadScene("SceneSelector");
         }
 
     }
