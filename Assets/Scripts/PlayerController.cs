@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
 
 
         }
-
+        //Exit to main switch menu if Spacebar is pressed.
         sceneSwitcher = Input.GetAxis("Jump");
         if (sceneSwitcher != 0)
         {
